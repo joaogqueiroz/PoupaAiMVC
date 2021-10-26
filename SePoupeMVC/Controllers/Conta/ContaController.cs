@@ -79,6 +79,7 @@ namespace SePoupeMVC.Controllers.Conta
                     usuario.Email = model.Email;
                     usuario.Senha = model.Senha;
 
+
                     //email verification
                     if (_usuarioRepository.Get(usuario.Email) != null)
                     {
