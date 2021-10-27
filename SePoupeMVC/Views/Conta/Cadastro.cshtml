@@ -1,5 +1,4 @@
-﻿@model SePoupeMVC.Models.Conta.CadastrarContaModel
-
+﻿@model SePoupeMVC.Models.Conta.CadastroContaModel
 @{
     Layout = null;
 }
@@ -17,7 +16,7 @@
     <div class="mt-5 col-md-4 offset-md-4">
         <div class="card bg-secondary">
             <div class="card-body text-center rounded-0">
-                <h5>Cadastrar</h5>
+                <h5>Registration</h5>
                 <hr />
 
                 @if (TempData["Message"] != null)
@@ -27,8 +26,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 }
-
-                @using (Html.BeginForm("Cadastrar", "Conta", FormMethod.Post, new { @autocomplete = "off" }))
+                @using (Html.BeginForm("Cadastro", "Conta", FormMethod.Post, new { @autocomplete = "off" }))
                 {
                     <label>Nome</label>
                     @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
@@ -44,13 +42,37 @@
                     </span>
                     <br />
 
+                    <label>CPF</label>
+                    @Html.TextBoxFor(model => model.CPF, new { @class = "form-control" })
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(model => model.CPF)
+                    </span>
+                    <br />
+
+                    <label>Data de nascimento</label>
+                    @Html.TextBoxFor(model => model.Nascimento, new { @class = "form-control", @type = "date", @style = "text-align:left" })
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Nascimento)
+                    </span>
+                    <br />
+
+                    <label>Sexo</label>
+                    @Html.DropDownListFor(model => model.Sexo, Html.GetEnumSelectList(typeof(SePoupeMVC.Models.Conta.Sexo))
+                             , new { @class = "form-select" })
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Sexo)
+                    </span>
+                    <br />
+
+
                     <label>Senha</label>
                     @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
                     <span class="text-danger">
                         @Html.ValidationMessageFor(model => model.Senha)
                     </span>
+                    <br />
 
-                    <label>Confirmação Senha</label>
+                    <label>Confirme sua senha</label>
                     @Html.PasswordFor(model => model.ConfirmacaoSenha, new { @class = "form-control" })
                     <span class="text-danger">
                         @Html.ValidationMessageFor(model => model.ConfirmacaoSenha)

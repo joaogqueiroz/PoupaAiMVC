@@ -62,13 +62,13 @@ namespace SePoupeMVC.Controllers.Conta
             }
             return View();
         }
-        public IActionResult Cadastrar()
+        public IActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(CadastrarContaModel model)
+        public IActionResult Cadastro(CadastroContaModel model)
         {
             if (ModelState.IsValid)
             {
@@ -78,6 +78,11 @@ namespace SePoupeMVC.Controllers.Conta
                     usuario.Nome = model.Nome;
                     usuario.Email = model.Email;
                     usuario.Senha = model.Senha;
+                    usuario.CPF = model.CPF;
+                    usuario.Tipo = 1;
+                    usuario.Nascimento = model.Nascimento;
+                    usuario.Sexo = model.Sexo.ToString();
+                    
 
 
                     //email verification

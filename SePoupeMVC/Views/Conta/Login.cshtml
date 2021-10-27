@@ -34,20 +34,20 @@
                     </span>
                     <br />
 
-                    <label>Password</label>
+                    <label>Senha</label>
                     @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
                     <span class="text-danger">
                         @Html.ValidationMessageFor(model => model.Senha)
                     </span>
                     <br />
                     <div class="text-end">
-                        <a href="/Conta/RecuperarSenha">Forget password</a>
+                        <a href="/Conta/RecuperarSenha">Esqueci a senha</a>
                     </div>
 
                     <div class="d-grid">
                         <input type="submit" class="btn btn-dark" value="Enter" />
                         <br />
-                        <a href="/Conta/Cadastrar" class="btn btn-light">Register</a>
+                        <a href="/Conta/Cadastro" class="btn btn-light">Cadastrar</a>                    
                     </div>
 
                 }
@@ -58,3 +58,4 @@
     <!--JS FILES HERE USING SCRIPT TAG-->
     <script src="~/js/bootstrap.js"></script>
 </body>
+</html>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SePoupeMVC.Models.Conta
 {
-    public class CadastrarContaModel
+    public class CadastroContaModel
     {
         [MaxLength(150, ErrorMessage = "Type a maximum of {1} characters")]
         [MinLength(6, ErrorMessage = "Type a minimum of {1} characters")]
@@ -17,15 +17,30 @@ namespace SePoupeMVC.Models.Conta
         [Required(ErrorMessage = "Inform your email.")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Informe seu CPF.")]
+        public string CPF { get; set; }
+
+        [Required(ErrorMessage = "Informe sua data de nascimento.")]
+        public DateTime Nascimento { get; set; }
+
+        [Required(ErrorMessage = "Selecione o sexo.")]
+        public Sexo? Sexo { get; set; }
+
         [StrongPassWord(ErrorMessage = "Inform a uppercase letter 1, 1 lowercase letter, 1 number and 1 special character(! @ # $ % & ).")]
         [MaxLength(20, ErrorMessage = "Type a maximum of {1} characters")]
         [MinLength(8, ErrorMessage = "Type a minimum of {1} characters")]
         [Required(ErrorMessage = "Inform your password.")]
         public string Senha { get; set; }
-        [Compare("PassWord", ErrorMessage = "The passwords don't are equals")]
+
+        [Compare("Senha", ErrorMessage = "The passwords don't are equals")]
         [Required(ErrorMessage = "Confirm your password")]
         public string ConfirmacaoSenha { get; set; }
 
+    }
+    public enum Sexo
+    {
+        M,
+        F
     }
     public class StrongPassWord : ValidationAttribute
     {
