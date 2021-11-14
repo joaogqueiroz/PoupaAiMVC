@@ -15,5 +15,6 @@ namespace SePoupeMVC.Data.Entities
         public int IdUsuario { get; set; }
         //Have one
         public Usuario Usuario { get; set; }
+        public int PontuacaoTotal { get; set; }
     }
 }

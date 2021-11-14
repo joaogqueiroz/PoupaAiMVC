@@ -25,7 +25,7 @@ namespace SePoupeMVC.Data.Repositories
         public void Create(Pontos pontos)
         {
             var query = @"
-            INSERT INTO Pontos(                
+            INSERT INTO pontos(                
                 Nivel1,
                 Nivel2,
                 Nivel3,
@@ -44,7 +44,7 @@ namespace SePoupeMVC.Data.Repositories
 
         public List<Pontos> Read()
         {
-            var query = @"SELECT * FROM Pontos";
+            var query = @"SELECT * FROM pontos";
 
             using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
@@ -56,10 +56,10 @@ namespace SePoupeMVC.Data.Repositories
         public void Update(Pontos pontos)
         {
             var query = @" 
-                UPDATE Pontos SET
+                UPDATE pontos SET
                     Nivel1 = @Nivel1,
                     Nivel2 = @Nivel2,
-                    Nivel3 = @Nivel3,                    
+                    Nivel3 = @Nivel3                  
                 WHERE
                     IdPontos = @IdPontos";
             using (var connetionString = new MySqlConnection(_context_UsuarioDB))
@@ -70,7 +70,7 @@ namespace SePoupeMVC.Data.Repositories
 
         public void Delete(Pontos pontos)
         {
-            var query = @"DELETE FROM Pontos
+            var query = @"DELETE FROM pontos
                           WHERE IdPontos = @IdPontos";
             using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
@@ -80,12 +80,22 @@ namespace SePoupeMVC.Data.Repositories
 
         public Pontos GetByID(int pontosID)
         {
-            var query = @"SELECT * FROM Pontos
+            var query = @"SELECT * FROM pontos
                           WHERE Pontos = @Pontos";
 
             using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
                 return connection.Query<Pontos>(query, new { pontosID }).FirstOrDefault();
+            }
+        }
+        public int GetPontosByIDUsuario(int idUsuario)
+        {
+            var query = @"SELECT SUM(Nivel1 + Nivel2 + Nivel3) AS PontuacaoTotal 
+                        FROM pontos WHERE(Id_Usuario = @idUsuario)";
+
+            using (var connection = new MySqlConnection(_context_UsuarioDB))
+            {
+                return connection.Query<int>(query, new { idUsuario }).FirstOrDefault();
             }
         }
     }

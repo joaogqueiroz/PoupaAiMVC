@@ -14,5 +14,6 @@ namespace SePoupeMVC.Data.Interfaces
         void Update(Pontos pontos);
         void Delete(Pontos pontos);
         Pontos GetByID(int pontosID);
+        int GetPontosByIDUsuario(int idUsuario);
     }
 }

@@ -75,7 +75,7 @@ namespace SePoupeMVC.Data.Repositories
             }
 
         }
-        public void Update(int userId, string novaSenha)
+        public void Update(int IdUsuario, string novaSenha)
         {
             //Senha = CONVERT(VARCHAR(32), HASHBYTES('MD5', @novaSenha), 2)
             var query = @"UPDATE Usuario
@@ -85,7 +85,7 @@ namespace SePoupeMVC.Data.Repositories
                                IdUsuario = @IdUsuario";
             using (var connetionString = new MySqlConnection(_context_UsuarioDB))
             {
-                connetionString.Execute(query, new { userId, novaSenha });
+                connetionString.Execute(query, new { IdUsuario, novaSenha });
             }
         }
 
@@ -111,7 +111,7 @@ namespace SePoupeMVC.Data.Repositories
         }
         public Usuario Get(string email)
         {
-            var query = @"SELECT IdUsuario FROM Usuario
+            var query = @"SELECT * FROM Usuario
                           WHERE Email = @email";
 
             using (var connection = new MySqlConnection(_context_UsuarioDB))

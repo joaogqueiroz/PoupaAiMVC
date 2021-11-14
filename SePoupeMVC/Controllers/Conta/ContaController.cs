@@ -16,10 +16,12 @@ namespace SePoupeMVC.Controllers.Conta
     public class ContaController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPontosRepository _pontosRepository;
 
-        public ContaController(IUsuarioRepository usuarioRepository)
+        public ContaController(IUsuarioRepository usuarioRepository, IPontosRepository pontosRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _pontosRepository = pontosRepository;
         }
 
         public IActionResult Login()
@@ -94,8 +96,23 @@ namespace SePoupeMVC.Controllers.Conta
                     {
                         //creating
                         _usuarioRepository.Create(usuario);
-                        TempData["Message"] = $"User {usuario.Nome} registred successfully";
-                        ModelState.Clear();
+                        var user =_usuarioRepository.Get(usuario.Email);
+                        if (true)
+                        {
+                            Pontos pontos = new Pontos();
+                            pontos.IdUsuario = user.IdUsuario;
+                            pontos.Nivel1 =0;
+                            pontos.Nivel2 = 0;
+                            pontos.Nivel3 = 0;
+                            _pontosRepository.Create(pontos);
+
+                            TempData["Message"] = $"Uusario {usuario.Nome} cadastrado com com sucesso";
+                            ModelState.Clear();
+
+                        }
+                        else {
+                            TempData["Message"] = $"Erro interno.";
+                        }
                     }
 
 
@@ -153,7 +170,7 @@ namespace SePoupeMVC.Controllers.Conta
 
                         var message = new EmailServiceMessage();
                         message.SendEmail(to, subject, body);
-                        TempData["Message"] = $"New password are generated successfully and sent to your email '{usuario.Email}' .";
+                        TempData["Message"] = $"New password are generated com sucesso and sent to your email'{usuario.Email}' .";
                         ModelState.Clear();
                     }
                     else

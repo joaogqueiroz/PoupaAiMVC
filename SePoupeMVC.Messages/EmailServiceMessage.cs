@@ -10,8 +10,8 @@ namespace SePoupeMVC.Messages
 {
     public class EmailServiceMessage
     {
-        private string _account = "EMAIL HERE ";
-        private string _password = "PASSWORD HERE ";
+        private string _account = "poupaaiproject@gmail.com";
+        private string _password = "Admin@root321";
         private string _smtp = "smtp.gmail.com";
         private int _port = 587;
 

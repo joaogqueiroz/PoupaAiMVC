@@ -24,7 +24,7 @@ namespace SePoupeMVC.Models.Conta
         public DateTime Nascimento { get; set; }
 
         [Required(ErrorMessage = "Selecione o sexo.")]
-        public Sexo? Sexo { get; set; }
+        public SexoUsuario? Sexo { get; set; }
 
         [StrongPassWord(ErrorMessage = "Inform a uppercase letter 1, 1 lowercase letter, 1 number and 1 special character(! @ # $ % & ).")]
         [MaxLength(20, ErrorMessage = "Type a maximum of {1} characters")]
@@ -37,10 +37,16 @@ namespace SePoupeMVC.Models.Conta
         public string ConfirmacaoSenha { get; set; }
 
     }
-    public enum Sexo
+    //Usar na MODEL
+    public enum SexoUsuario
     {
         M,
         F
+    }
+    public enum TipoUsuario
+    {
+        ADM,
+        USER
     }
     public class StrongPassWord : ValidationAttribute
     {

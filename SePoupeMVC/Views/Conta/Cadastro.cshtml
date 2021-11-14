@@ -57,7 +57,7 @@
                     <br />
 
                     <label>Sexo</label>
-                    @Html.DropDownListFor(model => model.Sexo, Html.GetEnumSelectList(typeof(SePoupeMVC.Models.Conta.Sexo))
+                    @Html.DropDownListFor(model => model.Sexo, Html.GetEnumSelectList(typeof(SePoupeMVC.Models.Conta.SexoUsuario))
                              , new { @class = "form-select" })
                     <span class="text-danger">
                         @Html.ValidationMessageFor(model => model.Sexo)
