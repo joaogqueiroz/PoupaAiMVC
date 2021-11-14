@@ -14,12 +14,12 @@ namespace SePoupeMVC.Data.Repositories
     {
 
         private readonly string _context_UsuarioDB;
-        private readonly string Context_QuestoesDB;
+        private readonly string _context_QuestoesDB;
 
         public PontosRepository(string context_UsuarioDB, string context_QuestoesDB)
         {
             _context_UsuarioDB = context_UsuarioDB;
-            Context_QuestoesDB = context_QuestoesDB;
+            _context_QuestoesDB = context_QuestoesDB;
         }
 
         public void Create(Pontos pontos)
@@ -31,12 +31,12 @@ namespace SePoupeMVC.Data.Repositories
                 Nivel3,
                 IdUsuario)
             VALUES(
-                    @Nivel1,
-                    @Nivel2,
-                    @Nivel3,
-                    @IdUsuario)";
+                @Nivel1,
+                @Nivel2,
+                @Nivel3,
+                @IdUsuario)";
 
-            using (var connetionString = new MySqlConnection(_context_UsuarioDB))
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
             {
                 connetionString.Execute(query, pontos);
             }
@@ -62,7 +62,7 @@ namespace SePoupeMVC.Data.Repositories
                     Nivel3 = @Nivel3                  
                 WHERE
                     IdPontos = @IdPontos";
-            using (var connetionString = new MySqlConnection(_context_UsuarioDB))
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
             {
                 connetionString.Execute(query, pontos);
             }
@@ -72,7 +72,7 @@ namespace SePoupeMVC.Data.Repositories
         {
             var query = @"DELETE FROM pontos
                           WHERE IdPontos = @IdPontos";
-            using (var connection = new MySqlConnection(_context_UsuarioDB))
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
             {
                 connection.Execute(query, pontos);
             }
@@ -83,7 +83,7 @@ namespace SePoupeMVC.Data.Repositories
             var query = @"SELECT * FROM pontos
                           WHERE Pontos = @Pontos";
 
-            using (var connection = new MySqlConnection(_context_UsuarioDB))
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
             {
                 return connection.Query<Pontos>(query, new { pontosID }).FirstOrDefault();
             }

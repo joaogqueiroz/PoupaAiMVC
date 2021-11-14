@@ -1,4 +1,6 @@
-﻿using SePoupeMVC.Data.Entities;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using SePoupeMVC.Data.Entities;
 using SePoupeMVC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,32 +24,87 @@ namespace SePoupeMVC.Data.Repositories
 
         public void Create(Nivel nivel)
         {
-            throw new NotImplementedException();
+            var query = @"
+            INSERT INTO nivel(                
+                nivel_1,
+                nivel_2,
+                nivel_3,
+                nivel_4,
+                nivel_correta,
+                Id_Questao)
+            VALUES(
+                @nivel_1,
+                @nivel_2,
+                @nivel_3,
+                @nivel_4,
+                @nivel_correta,
+                @Id_Questao)";
+
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, nivel);
+            }
         }
 
         public List<Nivel> Read()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM nivel
+                          ORDER BY IdNivel";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Nivel>(query).ToList();
+            }
         }
 
         public void Update(Nivel nivel)
         {
-            throw new NotImplementedException();
+            var query = @" 
+                UPDATE nivel SET
+                nivel_1 = @nivel_1,
+                nivel_2 = @nivel_2,
+                nivel_3 = @nivel_3,
+                nivel_4 = @nivel_4,
+                nivel_correta = @nivel_correta,
+                Id_Questao = @Id_Questao
+                WHERE
+                    Id_Questao = @Id_Questao";
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, nivel);
+            }
         }
 
         public void Delete(Nivel nivel)
         {
-            throw new NotImplementedException();
+            var query = @"DELETE FROM nivel
+                          WHERE IdNivel = @IdNivel";
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                connection.Execute(query, nivel);
+            }
         }
 
         public Nivel GetByID(int nivelID)
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM nivel
+                          WHERE IdNivel = @nivelID";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Nivel>(query, new { nivelID }).FirstOrDefault();
+            }
         }
 
-        public int GetNivelByIDUsuario(int idUsuario)
+        public List<Nivel> GetNivelByIDQuestao(int idNivel)
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM nivel
+                          WHERE Id_Questao = @idQuestao";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Nivel>(query, new { idNivel }).ToList();
+            }
         }
     }
 }

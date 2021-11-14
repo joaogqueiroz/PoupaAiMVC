@@ -1,4 +1,6 @@
-﻿using SePoupeMVC.Data.Entities;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using SePoupeMVC.Data.Entities;
 using SePoupeMVC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,32 +24,63 @@ namespace SePoupeMVC.Data.Repositories
 
         public void Create(Questoes questoes)
         {
-            throw new NotImplementedException();
+            var query = @"
+            INSERT INTO questoes(                
+                Enunciado,
+                Imagem)
+            VALUES(
+                @Enunciado,
+                @Imagem)";
+
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, questoes);
+            }
         }
 
         public List<Questoes> Read()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM questoes";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Questoes>(query).ToList();
+            }
         }
 
         public void Update(Questoes questoes)
         {
-            throw new NotImplementedException();
+            var query = @"
+                UPDATE questoes SET
+                Enunciado = @Enunciado,
+                Imagem = @Imagem
+                WHERE
+                    IdQuestao = @IdQuestao";
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, questoes);
+            }
         }
 
         public void Delete(Questoes questoes)
         {
-            throw new NotImplementedException();
+            var query = @"DELETE FROM questoes
+                          WHERE IdQuestao = @IdQuestao";
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                connection.Execute(query, questoes);
+            }
         }
 
         public Questoes GetByID(int questoesID)
         {
-            throw new NotImplementedException();
-        }
+            var query = @"SELECT * FROM questoes
+                          WHERE IdQuestao = @questoesID";
 
-        public int GetQuestoesByIDUsuario(int idUsuario)
-        {
-            throw new NotImplementedException();
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Questoes>(query, new { questoesID }).FirstOrDefault();
+            }
         }
     }
 }

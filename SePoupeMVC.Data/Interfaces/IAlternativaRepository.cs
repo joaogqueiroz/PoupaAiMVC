@@ -15,6 +15,6 @@ namespace SePoupeMVC.Data.Interfaces
         void Update(Alternativa alternativa);
         void Delete(Alternativa alternativa);
         Alternativa GetByID(int alternativaID);
-        int GetAlternativaByIDUsuario(int idUsuario);
+        List<Alternativa> GetAlternativaByIDQuestao(int idQuestao);
     }
 }

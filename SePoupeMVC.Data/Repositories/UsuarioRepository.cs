@@ -59,14 +59,15 @@ namespace SePoupeMVC.Data.Repositories
 
         public void Update(Usuario usuario)
         {
+            ////Senha = MD5(@Senha),
             var query = @" 
                 UPDATE Usuario SET
-                    Nome = @Nome,
-                    Senha = MD5(@Senha),
+                    Nome = @Nome,                    
+                    Senha = @Senha,
                     CPF = @CPF,
                     Sexo = @Sexo,
                     Tipo = @Tipo,
-                    Nascimento = @Nascimento,
+                    Nascimento = @Nascimento
                 WHERE
                     IdUsuario = @IdUsuario";
             using (var connetionString = new MySqlConnection(_context_UsuarioDB))

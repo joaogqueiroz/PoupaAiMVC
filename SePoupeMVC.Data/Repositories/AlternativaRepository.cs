@@ -1,4 +1,6 @@
-﻿using SePoupeMVC.Data.Entities;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using SePoupeMVC.Data.Entities;
 using SePoupeMVC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,32 +24,87 @@ namespace SePoupeMVC.Data.Repositories
 
         public void Create(Alternativa alternativa)
         {
-            throw new NotImplementedException();
+            var query = @"
+            INSERT INTO alternativas(                
+                alternativa_1,
+                alternativa_2,
+                alternativa_3,
+                alternativa_4,
+                alternativa_correta,
+                Id_Questao)
+            VALUES(
+                @alternativa_1,
+                @alternativa_2,
+                @alternativa_3,
+                @alternativa_4,
+                @alternativa_correta,
+                @Id_Questao)";
+
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, alternativa);
+            }
         }
 
         public List<Alternativa> Read()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM alternativas
+                          ORDER BY IdAlternativa";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Alternativa>(query).ToList();
+            }
         }
 
         public void Update(Alternativa alternativa)
         {
-            throw new NotImplementedException();
+            var query = @" 
+                UPDATE alternativas SET
+                alternativa_1 = @alternativa_1,
+                alternativa_2 = @alternativa_2,
+                alternativa_3 = @alternativa_3,
+                alternativa_4 = @alternativa_4,
+                alternativa_correta = @alternativa_correta,
+                Id_Questao = @Id_Questao
+                WHERE
+                    Id_Questao = @Id_Questao";
+            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            {
+                connetionString.Execute(query, alternativa);
+            }
         }
 
         public void Delete(Alternativa alternativa)
         {
-            throw new NotImplementedException();
+            var query = @"DELETE FROM alternativas
+                          WHERE IdAlternativa = @IdAlternativa";
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                connection.Execute(query, alternativa);
+            }
         }
 
         public Alternativa GetByID(int alternativaID)
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM alternativas
+                          WHERE IdAlternativa = @alternativaID";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Alternativa>(query, new { alternativaID }).FirstOrDefault();
+            }
         }
 
-        public int GetAlternativaByIDUsuario(int idUsuario)
+        public List<Alternativa> GetAlternativaByIDQuestao(int idQuestao)
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM alternativas
+                          WHERE Id_Questao = @idQuestao";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Alternativa>(query, new { idQuestao }).ToList();
+            }
         }
     }
 }

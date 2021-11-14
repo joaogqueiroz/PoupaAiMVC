@@ -15,6 +15,5 @@ namespace SePoupeMVC.Data.Interfaces
         void Update(Questoes questoes);
         void Delete(Questoes questoes);
         Questoes GetByID(int questoesID);
-        int GetQuestoesByIDUsuario(int idUsuario);
     }
 }
