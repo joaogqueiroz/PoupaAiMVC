@@ -1,0 +1,20 @@
+﻿using SePoupeMVC.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SePoupeMVC.Data.Interfaces
+{
+    public interface INivelRepository
+    {
+
+        void Create(Nivel nivel);
+        List<Nivel> Read();
+        void Update(Nivel nivel);
+        void Delete(Nivel nivel);
+        Nivel GetByID(int nivelID);
+        int GetNivelByIDUsuario(int idUsuario);
+    }
+}

@@ -37,7 +37,11 @@ namespace SePoupeMVC
             var Context_UsuarioDB = Configuration.GetConnectionString("Context_UsuarioDB");
             var Context_QuestoesDB = Configuration.GetConnectionString("Context_QuestoesDB");
             //Dependency injection
+            services.AddTransient<IAlternativaRepository, AlternativaRepository>(map => new AlternativaRepository(Context_UsuarioDB, Context_QuestoesDB));
+            services.AddTransient<INivelRepository, NivelRepository>(map => new NivelRepository(Context_UsuarioDB, Context_QuestoesDB));
             services.AddTransient<IPontosRepository, PontosRepository>(map => new PontosRepository(Context_UsuarioDB, Context_QuestoesDB));
+            services.AddTransient<IQuestoesRepository, QuestoesRepository>(map => new QuestoesRepository(Context_UsuarioDB, Context_QuestoesDB));
+            services.AddTransient<ITipoQuestaoRepository, TipoQuestaoRepository>(map => new TipoQuestaoRepository(Context_UsuarioDB, Context_QuestoesDB));
             services.AddTransient<IUsuarioRepository, UsuarioRepository>(map => new UsuarioRepository(Context_UsuarioDB, Context_QuestoesDB));
 
 
