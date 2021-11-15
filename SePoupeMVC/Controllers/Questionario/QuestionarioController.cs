@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SePoupeMVC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,47 @@ namespace SePoupeMVC.Controllers.Questionario
     [Authorize]
     public class QuestionarioController : Controller
     {
-        public IActionResult Questoes()
+
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IQuestoesRepository _questoesRepository;
+
+        public QuestionarioController(IUsuarioRepository usuarioRepository, IQuestoesRepository questoesRepository)
         {
+            _usuarioRepository = usuarioRepository;
+            _questoesRepository = questoesRepository;
+        }
+
+        public IActionResult Avaliacao()
+        {
+            try
+            {
+
+                var email = User.Identity.Name;
+
+                var usuario = _usuarioRepository.Get(email);
+                var pontuacao = _usuarioRepository.GetPontuacao(usuario.IdUsuario);
+
+                if (pontuacao >= 7)
+                {
+                    var Questoes = _questoesRepository.GetByMundo2();
+                    TempData["Questoes"] = Questoes;
+                }
+                else if (true)
+                {
+
+                }
+                else
+                {
+
+                }
+
+               
+            }
+            catch (Exception e)
+            {
+
+                TempData["Message"] = e.Message;
+            }
             return View();
         }
 

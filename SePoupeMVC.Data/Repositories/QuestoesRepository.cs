@@ -22,7 +22,7 @@ namespace SePoupeMVC.Data.Repositories
             _context_QuestoesDB = context_QuestoesDB;
         }
 
-        public void Create(Questoes questoes)
+        public void Create(Questao questoes)
         {
             var query = @"
             INSERT INTO questoes(                
@@ -38,17 +38,17 @@ namespace SePoupeMVC.Data.Repositories
             }
         }
 
-        public List<Questoes> Read()
+        public List<Questao> Read()
         {
             var query = @"SELECT * FROM questoes";
 
             using (var connection = new MySqlConnection(_context_QuestoesDB))
             {
-                return connection.Query<Questoes>(query).ToList();
+                return connection.Query<Questao>(query).ToList();
             }
         }
 
-        public void Update(Questoes questoes)
+        public void Update(Questao questoes)
         {
             var query = @"
                 UPDATE questoes SET
@@ -62,7 +62,7 @@ namespace SePoupeMVC.Data.Repositories
             }
         }
 
-        public void Delete(Questoes questoes)
+        public void Delete(Questao questoes)
         {
             var query = @"DELETE FROM questoes
                           WHERE IdQuestao = @IdQuestao";
@@ -72,15 +72,38 @@ namespace SePoupeMVC.Data.Repositories
             }
         }
 
-        public Questoes GetByID(int questoesID)
+        public Questao GetByID(int questoesID)
         {
             var query = @"SELECT * FROM questoes
                           WHERE IdQuestao = @questoesID";
 
             using (var connection = new MySqlConnection(_context_QuestoesDB))
             {
-                return connection.Query<Questoes>(query, new { questoesID }).FirstOrDefault();
+                return connection.Query<Questao>(query, new { questoesID }).FirstOrDefault();
             }
+        }
+
+        public List<Questao> GetByMundo1()
+        {
+            var query = @"SELECT Q.IdQuestao, Q.Enunciado, N.IdNivel, N.Descricao
+                        FROM questoes Q INNER JOIN
+                        nivel N ON Q.IdQuestao = N.Id_Questao
+                        WHERE (N.Descricao = 'Nivel1');";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Questao>(query).ToList();
+            }
+        }
+
+        public List<Questao> GetByMundo2()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Questao> GetByMundo3()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -88,14 +88,14 @@ namespace SePoupeMVC.Data.Repositories
                 return connection.Query<Pontos>(query, new { pontosID }).FirstOrDefault();
             }
         }
-        public int GetPontosByIDUsuario(int idUsuario)
+        public int? GetPontosByIDUsuario(int idUsuario)
         {
             var query = @"SELECT SUM(Nivel1 + Nivel2 + Nivel3) AS PontuacaoTotal 
                         FROM pontos WHERE(Id_Usuario = @idUsuario)";
 
             using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
-                return connection.Query<int>(query, new { idUsuario }).FirstOrDefault();
+                return connection.Query<int?>(query, new { idUsuario }).FirstOrDefault();
             }
         }
     }

@@ -1,0 +1,29 @@
+﻿@using SePoupeMVC.Data.Entities
+@{
+    ViewData["Title"] = "Avaliacao";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    var questoes = TempData["Questoes"] as List<SePoupeMVC.Data.Entities.Questao>;
+
+}
+
+<h1>Avaliacao</h1>
+<br />
+@foreach (var questao in questoes)
+{
+    var i = 0;
+    i++;
+<div class="accordion accordion-flush" id="accordionFlush_@questao.IdQuestao">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-heading_@questao.IdQuestao">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse_@questao.IdQuestao" aria-expanded="false" aria-controls="flush-collapse_@questao.IdQuestao">
+                Questao @questao.IdQuestao
+            </button>
+        </h2>
+        <div id="flush-collapse_@questao.IdQuestao" class="accordion-collapse collapse" aria-labelledby="flush-heading_@questao.IdQuestao" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">@questao.Enunciado</div>
+        </div>
+    </div>
+</div>
+
+}
+

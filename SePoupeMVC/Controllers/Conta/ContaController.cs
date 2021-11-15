@@ -101,7 +101,7 @@ namespace SePoupeMVC.Controllers.Conta
                         {
                             Pontos pontos = new Pontos();
                             pontos.IdUsuario = user.IdUsuario;
-                            pontos.Nivel1 =0;
+                            pontos.Nivel1 = 0;
                             pontos.Nivel2 = 0;
                             pontos.Nivel3 = 0;
                             _pontosRepository.Create(pontos);

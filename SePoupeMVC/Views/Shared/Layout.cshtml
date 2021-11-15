@@ -8,6 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
     <title>Aplicação</title>
     <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -16,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/Home/Index">Task Control</a>
+            <a class="navbar-brand" href="/Home/Index">Poupa aí</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,22 +31,22 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Control Tasks
+                            Questões
                         </a>
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item bg-dark text-white" href="/Task/Registration">Create Task</a></li>
-                            <li><a class="dropdown-item bg-dark text-white" href="/Task/Consult">Consult Task </a></li>
-                            <li><a class="dropdown-item bg-dark text-white" href="/Task/Report">Task Report</a></li>
+                            <li><a class="dropdown-item bg-dark text-white" href="/Questoes/Cadastrar">Criar Questões</a></li>
+                            <li><a class="dropdown-item bg-dark text-white" href="/Questoes/Consultar">Consultar Questões </a></li>
+                            <li><a class="dropdown-item bg-dark text-white" href="/Questionario/Avaliacao">Avaliacao </a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            My Account
+                            Minha Conta
                         </a>
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item bg-dark text-white" href="/User/Information">User data</a></li>
-                            <li><a class="dropdown-item bg-dark text-white" href="/User/ChangePassword">Change Password</a></li>
-                            <li><a class="dropdown-item bg-dark text-white" onclick="return confirm('Do you want to logout ?')" href="/Account/Logout">Logout</a></li>
+                            <li><a class="dropdown-item bg-dark text-white" href="/Usuario/Informacao">Dados do usuario</a></li>
+                            <li><a class="dropdown-item bg-dark text-white" href="/Usuario/AlterarSenha">Trocar senha</a></li>
+                            <li><a class="dropdown-item bg-dark text-white" onclick="return confirm('Você realmente deseja sair ?')" href="/Conta/Logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

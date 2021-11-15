@@ -1,0 +1,41 @@
+﻿
+@model SePoupeMVC.Models.Usuarios.AlterarSenhaUsuarioModel
+@{
+    ViewData["Title"] = "AlterarSenha";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h5>AlterarSenha</h5>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("AlterarSenha", "Usuario", FormMethod.Post,
+         new { @autocomplete = "off" }))
+        {
+            <label>Digite sua senha atual</label>
+            @Html.PasswordFor(model => model.SenhaAtual, new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.SenhaAtual)
+            </span>
+            <br />
+
+            <label>Digite sua nova senha</label>
+            @Html.PasswordFor(model => model.NovaSenha, new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.NovaSenha)
+            </span>
+            <br />
+
+            <label>Confirmar nova senha</label>
+            @Html.PasswordFor(model => model.ConfirmacaoNovaSenha, new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.ConfirmacaoNovaSenha)
+            </span>
+            <br />
+            <input type="submit" name="Alterar senha" value="Alterar senha" class="btn btn-success" />
+        }
+    </div>
+</div>

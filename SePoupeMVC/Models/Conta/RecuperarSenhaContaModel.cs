@@ -8,8 +8,8 @@ namespace SePoupeMVC.Models.Conta
 {
     public class RecuperarSenhaContaModel
     {
-        [EmailAddress(ErrorMessage = "Inform a valid email.")]
-        [Required(ErrorMessage = "Inform your email.")]
+        [EmailAddress(ErrorMessage = "Preencha o campo email, com um email valido.")]
+        [Required(ErrorMessage = "Preencha o campo email.")]
         public string Email { get; set; }
     }
 }

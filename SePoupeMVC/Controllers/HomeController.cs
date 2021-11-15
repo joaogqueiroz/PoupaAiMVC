@@ -28,16 +28,23 @@ namespace SePoupeMVC.Controllers
         {
             try
             {
-                //TempData["FirstDayOfCurrentMonth"] = FirstDayOfCurrentMonth.ToString("MM/dd/yyyy");
-                //TempData["LastDayOfCurrentMonth"] = LastDayOfCurrentMonth.ToString("MM/dd/yyyy");
-
                 var email = User.Identity.Name;
 
                 var usuario = _usuarioRepository.Get(email);
 
                 var Pontuacao = _pontosRepository.GetPontosByIDUsuario(usuario.IdUsuario);
-                TempData["Pontuacao"] = Pontuacao;
 
+                if (Pontuacao == null)
+                {
+                    TempData["Pontuacao"] = 0;
+
+                }
+                else
+                {
+                    TempData["Pontuacao"] = Pontuacao;
+
+
+                }
                 /*
                  var tasks = _pontosRepository.GetByUserAndPeriod(user.UserID, FirstDayOfCurrentMonth, LastDayOfCurrentMonth);
 

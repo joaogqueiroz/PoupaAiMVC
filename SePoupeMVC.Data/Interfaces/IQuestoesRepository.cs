@@ -10,10 +10,14 @@ namespace SePoupeMVC.Data.Interfaces
     public interface IQuestoesRepository
     {
 
-        void Create(Questoes questoes);
-        List<Questoes> Read();
-        void Update(Questoes questoes);
-        void Delete(Questoes questoes);
-        Questoes GetByID(int questoesID);
+        void Create(Questao questoes);
+        List<Questao> Read();
+        void Update(Questao questoes);
+        void Delete(Questao questoes);
+        Questao GetByID(int questoesID);
+        List<Questao> GetByMundo1();
+        List<Questao> GetByMundo2();
+        List<Questao> GetByMundo3();
+
     }
 }

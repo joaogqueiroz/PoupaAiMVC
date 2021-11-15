@@ -17,5 +17,7 @@ namespace SePoupeMVC.Data.Interfaces
         Usuario GetByID(int usuarioID);
         Usuario Get(string Email);
         Usuario Get(string Email, string Senha);
+        int GetPontuacao(int IdUsuario);
+
     }
 }
