@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SePoupeMVC.Data.Entities;
 using SePoupeMVC.Data.Interfaces;
+using SePoupeMVC.Models.Questionario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +16,16 @@ namespace SePoupeMVC.Controllers.Questionario
 
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IQuestoesRepository _questoesRepository;
+        private readonly IAlternativaRepository _alternativaRepository;
 
-        public QuestionarioController(IUsuarioRepository usuarioRepository, IQuestoesRepository questoesRepository)
+        public QuestionarioController(IUsuarioRepository usuarioRepository, IQuestoesRepository questoesRepository, IAlternativaRepository alternativaRepository)
         {
             _usuarioRepository = usuarioRepository;
             _questoesRepository = questoesRepository;
+            _alternativaRepository = alternativaRepository;
         }
 
-        public IActionResult Avaliacao()
+        public IActionResult Avaliacao(int id)
         {
             try
             {
@@ -29,23 +33,30 @@ namespace SePoupeMVC.Controllers.Questionario
                 var email = User.Identity.Name;
 
                 var usuario = _usuarioRepository.Get(email);
-                var pontuacao = _usuarioRepository.GetPontuacao(usuario.IdUsuario);
 
-                if (pontuacao >= 7)
+                
+                if (id == 1)
                 {
+                    var Questoes = _questoesRepository.GetByMundo1();
+                    var Alternativas = _alternativaRepository.Read();
+
+
+                    TempData["Questoes"] = Questoes;
+                    TempData["Alternativas"] = Alternativas;
+                }
+                else if (id == 2)
+                {
+
                     var Questoes = _questoesRepository.GetByMundo2();
                     TempData["Questoes"] = Questoes;
-                }
-                else if (true)
-                {
-
                 }
                 else
                 {
 
+                    var Questoes = _questoesRepository.GetByMundo3();
+                    TempData["Questoes"] = Questoes;
                 }
 
-               
             }
             catch (Exception e)
             {
@@ -55,7 +66,8 @@ namespace SePoupeMVC.Controllers.Questionario
             return View();
         }
 
-        public IActionResult Consulta()
+        [HttpPost]
+        public IActionResult Consulta(AvaliacaoModel model)
         {
             try
             {

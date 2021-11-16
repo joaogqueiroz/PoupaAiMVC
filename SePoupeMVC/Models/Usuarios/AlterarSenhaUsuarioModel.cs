@@ -9,7 +9,7 @@ namespace SePoupeMVC.Models.Usuarios
 {
     public class AlterarSenhaUsuarioModel
     {
-        [Required(ErrorMessage = "Inform your actual password.")]
+        [Required(ErrorMessage = "Informe sua senha atual")]
         public string SenhaAtual { get; set; }
 
         [StrongPassWord(ErrorMessage = "Informe um caracter maiusculo, 1 minusculo, 1 numero e um caracter especial(! @ # $ % & ).")]

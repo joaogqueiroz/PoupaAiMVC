@@ -85,9 +85,10 @@ namespace SePoupeMVC.Data.Repositories
 
         public List<Questao> GetByMundo1()
         {
-            var query = @"SELECT Q.IdQuestao, Q.Enunciado, N.IdNivel, N.Descricao
-                        FROM questoes Q INNER JOIN
-                        nivel N ON Q.IdQuestao = N.Id_Questao
+            var query = @"SELECT *
+                        FROM questoes Q 
+                        INNER JOIN nivel N
+                        ON Q.IdQuestao = N.Id_Questao
                         WHERE (N.Descricao = 'Nivel1');";
 
             using (var connection = new MySqlConnection(_context_QuestoesDB))
@@ -98,12 +99,28 @@ namespace SePoupeMVC.Data.Repositories
 
         public List<Questao> GetByMundo2()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT Q.IdQuestao, Q.Enunciado, N.IdNivel, N.Descricao
+                        FROM questoes Q INNER JOIN
+                        nivel N ON Q.IdQuestao = N.Id_Questao
+                        WHERE (N.Descricao = 'Nivel2');";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Questao>(query).ToList();
+            }
         }
 
         public List<Questao> GetByMundo3()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT Q.IdQuestao, Q.Enunciado, N.IdNivel, N.Descricao
+                        FROM questoes Q INNER JOIN
+                        nivel N ON Q.IdQuestao = N.Id_Questao
+                        WHERE (N.Descricao = 'Nivel3');";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Questao>(query).ToList();
+            }
         }
     }
 }

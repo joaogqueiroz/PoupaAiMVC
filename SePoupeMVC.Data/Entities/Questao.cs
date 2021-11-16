@@ -15,5 +15,9 @@ namespace SePoupeMVC.Data.Entities
         public Nivel Nivel { get; set; }
         public List<Alternativa> Alternativas { get; set; }
 
+        public static implicit operator List<object>(Questao v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
