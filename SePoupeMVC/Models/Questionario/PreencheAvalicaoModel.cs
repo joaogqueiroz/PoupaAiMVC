@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Models.Questionario
+namespace PoupaAiMVC.Models.Questionario
 {
     public class PreencheAvalicaoModel
     {

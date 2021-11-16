@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Models.Conta
+namespace PoupaAiMVC.Models.Conta
 {
     public class RecuperarSenhaContaModel
     {

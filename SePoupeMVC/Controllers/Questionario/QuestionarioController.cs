@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SePoupeMVC.Data.Entities;
-using SePoupeMVC.Data.Interfaces;
-using SePoupeMVC.Models.Questionario;
+using PoupaAiMVC.Data.Entities;
+using PoupaAiMVC.Data.Interfaces;
+using PoupaAiMVC.Models.Questionario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Controllers.Questionario
+namespace PoupaAiMVC.Controllers.Questionario
 {
     [Authorize]
     public class QuestionarioController : Controller

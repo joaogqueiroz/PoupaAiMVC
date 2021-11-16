@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Controllers.Manual
+namespace PoupaAiMVC.Controllers.Manual
 {
     [Authorize]
     public class ManualController : Controller

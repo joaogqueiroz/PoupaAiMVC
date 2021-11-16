@@ -1,10 +1,10 @@
-﻿@using SePoupeMVC.Data.Entities
-@model SePoupeMVC.Models.Questionario.AvaliacaoModel
+﻿@using PoupaAiMVC.Data.Entities
+@model PoupaAiMVC.Models.Questionario.AvaliacaoModel
 @{
     ViewData["Title"] = "Avaliacao";
     Layout = "~/Views/Shared/Layout.cshtml";
-    var questoes = TempData["Questoes"] as List<SePoupeMVC.Data.Entities.Questao>;
-    var alternativas = TempData["Alternativas"] as List<SePoupeMVC.Data.Entities.Alternativa>;
+    var questoes = TempData["Questoes"] as List<PoupaAiMVC.Data.Entities.Questao>;
+    var alternativas = TempData["Alternativas"] as List<PoupaAiMVC.Data.Entities.Alternativa>;
 
 }
 

@@ -1,10 +1,10 @@
-﻿using SePoupeMVC.Data.Entities;
+﻿using PoupaAiMVC.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Models.Questoes
+namespace PoupaAiMVC.Models.Questoes
 {
     public class CriarQuestoesModel
     {

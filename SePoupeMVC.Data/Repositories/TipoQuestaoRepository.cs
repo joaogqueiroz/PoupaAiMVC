@@ -1,14 +1,14 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using SePoupeMVC.Data.Entities;
-using SePoupeMVC.Data.Interfaces;
+using PoupaAiMVC.Data.Entities;
+using PoupaAiMVC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Data.Repositories
+namespace PoupaAiMVC.Data.Repositories
 {
     public class TipoQuestaoRepository : ITipoQuestaoRepository
     {

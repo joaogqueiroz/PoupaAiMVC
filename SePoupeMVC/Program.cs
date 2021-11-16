@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC
+namespace PoupaAiMVC
 {
     public class Program
     {

@@ -1,11 +1,11 @@
-﻿using SePoupeMVC.Models.Conta;
+﻿using PoupaAiMVC.Models.Conta;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Models.Usuarios
+namespace PoupaAiMVC.Models.Usuarios
 {
     public class AlterarSenhaUsuarioModel
     {

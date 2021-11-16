@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using SePoupeMVC.Data.Entities;
-using SePoupeMVC.Data.Interfaces;
-using SePoupeMVC.Messages;
-using SePoupeMVC.Models.Conta;
+using PoupaAiMVC.Data.Entities;
+using PoupaAiMVC.Data.Interfaces;
+using PoupaAiMVC.Messages;
+using PoupaAiMVC.Models.Conta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Controllers.Conta
+namespace PoupaAiMVC.Controllers.Conta
 {
     public class ContaController : Controller
     {

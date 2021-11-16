@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SePoupeMVC.Data.Interfaces;
-using SePoupeMVC.Data.Repositories;
+using PoupaAiMVC.Data.Interfaces;
+using PoupaAiMVC.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC
+namespace PoupaAiMVC
 {
     public class Startup
     {

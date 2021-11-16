@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SePoupeMVC.Data.Interfaces;
-using SePoupeMVC.Models.Usuarios;
+using PoupaAiMVC.Data.Interfaces;
+using PoupaAiMVC.Models.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Controllers.Usuarios
+namespace PoupaAiMVC.Controllers.Usuarios
 {
     [Authorize]
     public class UsuarioController : Controller

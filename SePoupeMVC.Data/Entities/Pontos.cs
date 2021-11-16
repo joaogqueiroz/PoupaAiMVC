@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Data.Entities
+namespace PoupaAiMVC.Data.Entities
 {
     public class Pontos
     {

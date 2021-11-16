@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SePoupeMVC.Data.Interfaces;
-using SePoupeMVC.Models;
+using PoupaAiMVC.Data.Interfaces;
+using PoupaAiMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SePoupeMVC.Controllers
+namespace PoupaAiMVC.Controllers
 {
     [Authorize] //Just allow authenticated users
     public class HomeController : Controller
