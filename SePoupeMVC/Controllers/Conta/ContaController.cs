@@ -53,7 +53,7 @@ namespace PoupaAiMVC.Controllers.Conta
                     }
                     else
                     {
-                        TempData["Message"] = $"Invalid usuario or password";
+                        TempData["Message"] = $"Usuario ou senha invalidos";
                     }
                 }
                 catch (Exception e)
@@ -90,7 +90,7 @@ namespace PoupaAiMVC.Controllers.Conta
                     //email verification
                     if (_usuarioRepository.Get(usuario.Email) != null)
                     {
-                        TempData["Message"] = $"Email {usuario.Email} already exists";
+                        TempData["Message"] = $"Email {usuario.Email} já existe!";
                     }
                     else
                     {
@@ -152,30 +152,30 @@ namespace PoupaAiMVC.Controllers.Conta
                         //send email
 
                         var to = usuario.Email;
-                        var subject = "New password - Task Control System";
+                        var subject = "Nova senha - Poupa AÍ";
                         var body = $@"
                         <div style='text-align: center; margin:40px; padding: 60px; borde: 2px solid #ccc; font-size: 16pt;'>
                          <br/>
                         Hello <strong>{usuario.Nome}</strong>,
                          <br/>
-                         System generats a new password for you access your account.
+                         O sistema gerou uma nova senha de acesso para a sua conta.
                          <br/>
-                         Please use this password: <strong>{novaSenha}</strong>
+                         Por favor use essa senha: <strong>{novaSenha}</strong>
                          <br/>
-                         After to login you could to change this password for one that you prefer.
+                         Após o login você pode ajustar a senha para uma de sua preferencia!
                          <br/>
-                         Best Regards.
+                         Att, Poupa AÍ
                         </div>
                         ";
 
                         var message = new EmailServiceMessage();
                         message.SendEmail(to, subject, body);
-                        TempData["Message"] = $"New password are generated com sucesso and sent to your email'{usuario.Email}' .";
+                        TempData["Message"] = $"Nova senha gerada com sucesso e enviada para o seu email'{usuario.Email}' .";
                         ModelState.Clear();
                     }
                     else
                     {
-                        TempData["Message"] = "The email doesn't exists in this system.";
+                        TempData["Message"] = "O email não foi encontrado.";
                     }
                 }
                 catch (Exception e)

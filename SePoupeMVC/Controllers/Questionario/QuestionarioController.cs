@@ -18,6 +18,7 @@ namespace PoupaAiMVC.Controllers.Questionario
         private readonly IQuestoesRepository _questoesRepository;
         private readonly IAlternativaRepository _alternativaRepository;
 
+
         public QuestionarioController(IUsuarioRepository usuarioRepository, IQuestoesRepository questoesRepository, IAlternativaRepository alternativaRepository)
         {
             _usuarioRepository = usuarioRepository;
@@ -66,19 +67,15 @@ namespace PoupaAiMVC.Controllers.Questionario
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Consulta(AvaliacaoModel model)
+
+        public IActionResult ValidaRespostas(AvaliacaoModel model)
         {
             try
             {
-                //getting user email
-                var email = User.Identity.Name;
-
-                //getting user informations using email
-                //var user = _userRepository.Get(email);
-
-                //getting user tasks
-                //TempData["Tasks"] = _taskRepository.GetByUser(user.UserID);
+                if (ModelState.IsValid)
+                {
+                    
+                }
 
             }
             catch (Exception e)

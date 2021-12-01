@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PoupaAiMVC.Models.Questionario
 {
-    public class PreencheAvalicaoModel
+    public class ValidaRespostasModel
     {
         public List<Data.Entities.Questao> Questoes { get; set; }
         public List<Data.Entities.Alternativa> Alternativas { get; set; }
