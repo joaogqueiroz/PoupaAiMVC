@@ -33,8 +33,8 @@
                     @if (alternativas[j].Id_Questao == questoes[i].IdQuestao)
                     {
                         <div>
-                            @Html.RadioButtonFor(model => model.Alternativas[j].AlternativaEscolhida, false, new { id = @alternativas[j].IdAlternativa, name = @alternativas[j].alternativa, value = @alternativas[j].alternativa, @class = "with-gap" })
-                            <label>@Alternativas[j].alternativa</label>
+                            @Html.RadioButtonFor(m => m.Alternativas[j].IdAlternativa, alternativas[j].AlternativaEscolhida)
+                            @Html.LabelFor(model => model.Questoes[i].Enunciado)
                             @Html.HiddenFor(model => Model.Alternativas[j].correta)
                             @Html.HiddenFor(model => Model.Alternativas[j].IdAlternativa)
                         </div>
