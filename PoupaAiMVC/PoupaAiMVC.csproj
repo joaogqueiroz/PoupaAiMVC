@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SePoupeMVC.Data\PoupaAiMVC.Data.csproj" />
-    <ProjectReference Include="..\SePoupeMVC.Messages\PoupaAiMVC.Messages.csproj" />
+    <ProjectReference Include="..\PoupaAiMVC.Data\PoupaAiMVC.Data.csproj" />
+    <ProjectReference Include="..\PoupaAiMVC.Messages\PoupaAiMVC.Messages.csproj" />
   </ItemGroup>
 
 </Project>
