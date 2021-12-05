@@ -33,21 +33,20 @@
                     @if (alternativas[j].Id_Questao == questoes[i].IdQuestao)
                     {
                         <div>
-                            @Html.RadioButtonFor(m => m.Alternativas[j].IdAlternativa, alternativas[j].AlternativaEscolhida)
-                            @Html.LabelFor(model => model.Questoes[i].Enunciado)
-                            @Html.HiddenFor(model => Model.Alternativas[j].correta)
-                            @Html.HiddenFor(model => Model.Alternativas[j].IdAlternativa)
+                                @Html.RadioButtonFor(m => m.Alternativas[j].IdAlternativa, alternativas[j].AlternativaEscolhida)
+                                @Html.LabelFor(model => model.Alternativas[i].alternativa)
+                                @Html.HiddenFor(model => Model.Alternativas[j].correta)
+                                @Html.HiddenFor(model => Model.Alternativas[j].IdAlternativa)</div>
+                            }
+
+                            }
                         </div>
-                    }
+                    </div>
+                </div>
+            }
 
-                }
-            </div>
-        </div>
-    </div>
-}
-
-<div class="d-grid">
-    <a class="btn btn-primary" href="@Url.Action("ValidaRespostas","Questionario")">Finalizar</a>
-</div>
+                    <div class="d-grid">
+                        <a class="btn btn-primary" href="@Url.Action("ValidaRespostas","Questionario")">Finalizar</a>
+                    </div>
 
 
