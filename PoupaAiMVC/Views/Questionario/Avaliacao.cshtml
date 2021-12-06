@@ -32,20 +32,20 @@
                     {
                         @if (Model.Alternativas[j].Id_Questao == Model.Questoes[i].IdQuestao)
                         {
-                            <div class="row">
-                                <div class="col-md">
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
 
-                                    @Html.RadioButtonFor(model => model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @id = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @class="form-check-input"})
-                                    @Html.LabelFor(model => model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @id = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @class = "form-check-label"})
-                                    @Html.HiddenFor(model => model.Alternativas[j].Id_Questao)
-                                    @Html.HiddenFor(model => model.Alternativas[j].IdAlternativa)
+                    @Html.RadioButton(Model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao })
 
+                    @Html.LabelFor(model => model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
+                    @Html.HiddenFor(model => model.Alternativas[j].Id_Questao)
+                    @Html.HiddenFor(model => model.Alternativas[j].IdAlternativa)
+                </div>
 
-                                </div>
-                            </div>
                         }
                     }
                 </div>
+
             </div>
         </div>
     }
