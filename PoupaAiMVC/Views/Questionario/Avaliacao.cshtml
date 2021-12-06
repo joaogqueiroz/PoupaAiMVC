@@ -1,5 +1,5 @@
 ﻿@using PoupaAiMVC.Data.Entities
-@model PoupaAiMVC.Models.Questionario.AvaliacaoModel
+@model PoupaAiMVC.Models.Questionario.ValidaRespostasModel
 @{
     ViewData["Title"] = "Avaliacao";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -32,15 +32,16 @@
                     {
                         @if (Model.Alternativas[j].Id_Questao == Model.Questoes[i].IdQuestao)
                         {
-                <div class="form-check">
-                    @Html.RadioButtonFor(model => model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
+                            <div class="form-check">
 
-                    @Html.RadioButton(Model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao })
 
-                    @Html.LabelFor(model => model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
-                    @Html.HiddenFor(model => model.Alternativas[j].Id_Questao)
-                    @Html.HiddenFor(model => model.Alternativas[j].IdAlternativa)
-                </div>
+                                @Html.RadioButtonFor(Model => Model.AlternativaEscolhida[i], Model.Alternativas[j].alternativa, new { @Name = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
+                                @Html.LabelFor(Model => Model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
+                                @Html.HiddenFor(Model => Model.Alternativas[j].Id_Questao)
+                                @Html.HiddenFor(Model => Model.Alternativas[j].IdAlternativa)
+                                @Html.HiddenFor(Model => Model.Alternativas[j].correta)
+                                @Html.HiddenFor(Model => Model.Alternativas[j].alternativa)
+                            </div>
 
                         }
                     }
