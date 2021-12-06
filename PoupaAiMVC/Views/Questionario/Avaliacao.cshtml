@@ -3,50 +3,54 @@
 @{
     ViewData["Title"] = "Avaliacao";
     Layout = "~/Views/Shared/Layout.cshtml";
-    var questoes = TempData["Questoes"] as List<PoupaAiMVC.Data.Entities.Questao>;
-    var alternativas = TempData["Alternativas"] as List<PoupaAiMVC.Data.Entities.Alternativa>;
 
 }
 
 <br />
-
-@for (int i = 0; i < questoes.Count(); i++)
+@using (Html.BeginForm("ValidaRespostas", "Questionario", FormMethod.Post, new { @autocomplete = "off" }))
 {
+    @for (int i = 0; i < Model.Questoes.Count(); i++)
+    {
+        @Html.HiddenFor(model => model.Questoes[i].IdQuestao)
 
-    <div class="accordion accordion-flush" id="accordionFlush_@i">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-heading_@i">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse_@i" aria-expanded="false" aria-controls="flush-collapse_@i">
-                    @{int contador = i + 1;}
-                    Questão @contador
-                </button>
-            </h2>
-            <div id="flush-collapse_@i" class="accordion-collapse collapse" aria-labelledby="flush-heading_@i" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">@questoes[i].Enunciado</div>
-                <br />
-                <br />
+        <div class="accordion accordion-flush" id="accordionFlush_@i">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading_@i">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse_@i" aria-expanded="false" aria-controls="flush-collapse_@i">
+                        @{int contador = i + 1;}
+                        Questão @contador
+                    </button>
+                </h2>
+                <div id="flush-collapse_@i" class="accordion-collapse collapse" aria-labelledby="flush-heading_@i" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">@Model.Questoes[i].Enunciado</div>
+                    <br />
+                    <br />
 
 
 
-                @for (int j = 0; j < alternativas.Count(); j++)
-                {
-                    @if (alternativas[j].Id_Questao == questoes[i].IdQuestao)
+                    @for (int j = 0; j < Model.Alternativas.Count(); j++)
                     {
-                        <div>
-                                @Html.RadioButtonFor(m => m.Alternativas[j].IdAlternativa, alternativas[j].AlternativaEscolhida)
-                                @Html.LabelFor(model => model.Alternativas[i].alternativa)
-                                @Html.HiddenFor(model => Model.Alternativas[j].correta)
-                                @Html.HiddenFor(model => Model.Alternativas[j].IdAlternativa)</div>
-                            }
+                        @if (Model.Alternativas[j].Id_Questao == Model.Questoes[i].IdQuestao)
+                        {
+                            <div class="row">
+                                <div class="col-md">
 
-                            }
-                        </div>
-                    </div>
+                                    @Html.RadioButtonFor(model => model.Alternativas[j].AlternativaEscolhida, Model.Alternativas[j].alternativa, new { @id = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @class="form-check-input"})
+                                    @Html.LabelFor(model => model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @id = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @class = "form-check-label"})
+                                    @Html.HiddenFor(model => model.Alternativas[j].Id_Questao)
+                                    @Html.HiddenFor(model => model.Alternativas[j].IdAlternativa)
+
+
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
-            }
+            </div>
+        </div>
+    }
+    <div class="d-grid">
+        <input type="submit" value="Finalizar" class="btn btn-primary" />
+    </div>
 
-                    <div class="d-grid">
-                        <a class="btn btn-primary" href="@Url.Action("ValidaRespostas","Questionario")">Finalizar</a>
-                    </div>
-
-
+}

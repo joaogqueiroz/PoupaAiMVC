@@ -41,9 +41,11 @@ namespace PoupaAiMVC.Controllers.Questionario
                     var Questoes = _questoesRepository.GetByMundo1();
                     var Alternativas = _alternativaRepository.Read();
 
+                    AvaliacaoModel model = new AvaliacaoModel();
+                    model.Alternativas = Alternativas;
+                    model.Questoes = Questoes;
 
-                    TempData["Questoes"] = Questoes;
-                    TempData["Alternativas"] = Alternativas;
+                    return View(model);
                 }
                 else if (id == 2)
                 {
@@ -67,13 +69,25 @@ namespace PoupaAiMVC.Controllers.Questionario
             return View();
         }
 
-
+        [HttpPost]
         public IActionResult ValidaRespostas(AvaliacaoModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    for (int i = 0; i < model.Questoes.Count(); i++)
+                    {
+                        for (int j = 0; j < model.Alternativas.Count(); i++)
+                        {
+                            if (model.Alternativas[j].AlternativaEscolhida != null)
+                            {
+
+                            }
+                        }
+                        
+
+                    }
                     
                 }
 
