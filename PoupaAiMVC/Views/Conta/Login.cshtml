@@ -12,11 +12,11 @@
     <!--CSS FILES HERE USING LINK TAG-->
     <link href="~/css/bootstrap.css" rel="stylesheet" />
 </head>
-<body class="bg-white text-white">
+<body class="bg-light text-white">
     <div class="mt-5 col-md-4 offset-md-4">
-        <div class="card bg-secondary">
+        <div class="card bg-primary">
             <div class="card-body text-center rounded-0">
-                <h5>Login</h5>
+                <h3>Login</h3>
                 <hr />
                 @if (TempData["Message"] != null)
                 {
@@ -40,14 +40,14 @@
                         @Html.ValidationMessageFor(model => model.Senha)
                     </span>
                     <br />
-                    <div class="text-end">
-                        <a href="/Conta/RecuperarSenha">Esqueci a senha</a>
+                    <div class="text-end text-white">
+                        <a  class="text-white" href="/Conta/RecuperarSenha">Esqueci a senha</a>
                     </div>
 
                     <div class="d-grid">
-                        <input type="submit" class="btn btn-dark" value="Login" />
+                        <input type="submit" class="btn btn-success" value="Login" />
                         <br />
-                        <a href="/Conta/Cadastro" class="btn btn-light">Cadastrar</a>                    
+                        <a href="/Conta/Cadastro" class="btn btn-secondary">Cadastrar</a>                    
                     </div>
 
                 }
