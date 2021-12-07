@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
-    var pontuacao = @TempData["Pontuacao"];
+    int pontuacao = Int32.Parse(@TempData["Pontuacao"].ToString());
 }
 
 <h3><strong>Pontuação total : @pontuacao</strong></h3>
@@ -63,7 +63,7 @@
                     <br />
                     <br />
                 </p>
-                @if (pontuacao)
+                @if (pontuacao > 6)
                 {
                     <div class="d-grid">
                         <a href="/Questionario/Avaliacao?id=2" disabled class="btn btn-primary" onclick="return confirm('Deseja começar o questionario ?')">Iniciar questionario</a>
