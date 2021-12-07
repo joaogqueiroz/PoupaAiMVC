@@ -22,19 +22,13 @@
                     </button>
                 </h2>
                 <div id="flush-collapse_@i" class="accordion-collapse collapse" aria-labelledby="flush-heading_@i" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">@Model.Questoes[i].Enunciado</div>
-                    <br />
-                    <br />
-
-
+                    <div class="accordion-body"><b>@Model.Questoes[i].Enunciado</b></div>
 
                     @for (int j = 0; j < Model.Alternativas.Count(); j++)
                     {
                         @if (Model.Alternativas[j].Id_Questao == Model.Questoes[i].IdQuestao)
                         {
                             <div class="form-check">
-
-
                                 @Html.RadioButtonFor(Model => Model.AlternativaEscolhida[i], Model.Alternativas[j].alternativa, new { @Name = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
                                 @Html.LabelFor(Model => Model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
                                 @Html.HiddenFor(Model => Model.Alternativas[j].Id_Questao)
@@ -53,5 +47,7 @@
     <div class="d-grid">
         <input type="submit" value="Finalizar" class="btn btn-primary" />
     </div>
+    
+
 
 }

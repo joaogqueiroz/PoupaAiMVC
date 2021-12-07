@@ -35,7 +35,7 @@ namespace PoupaAiMVC.Controllers.Questionario
 
                 var usuario = _usuarioRepository.Get(email);
 
-                
+
                 if (id == 1)
                 {
                     var Questoes = _questoesRepository.GetByMundo1();
@@ -51,7 +51,13 @@ namespace PoupaAiMVC.Controllers.Questionario
                 {
 
                     var Questoes = _questoesRepository.GetByMundo2();
-                    TempData["Questoes"] = Questoes;
+                    var Alternativas = _alternativaRepository.Read();
+
+                    ValidaRespostasModel model = new ValidaRespostasModel();
+                    model.Alternativas = Alternativas;
+                    model.Questoes = Questoes;
+
+                    return View(model);
                 }
                 else
                 {
@@ -79,23 +85,27 @@ namespace PoupaAiMVC.Controllers.Questionario
                     for (int i = 0; i < model.Questoes.Count(); i++)
                     {
 
-                            if (model.Questoes.Count() == model.AlternativaEscolhida.Count())
-                            {
+                        if (model.Questoes.Count() == model.AlternativaEscolhida.Count())
+                        {
                             for (int j = 0; j < model.Alternativas.Count(); j++)
                             {
-                                if ()
+                                /*if ()
                                 {
 
-                                }
+                                }*/
 
                             }
 
-                            }
-                        
-                        
+                        }
+                        else
+                        {
+                            TempData["Messege"] = "Selecione ao menos uma alternativa por questão";
+                        }
+
+
 
                     }
-                    
+
                 }
 
             }
