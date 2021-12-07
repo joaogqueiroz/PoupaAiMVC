@@ -14,6 +14,8 @@ namespace PoupaAiMVC.Data.Interfaces
         void Update(Pontos pontos);
         void Delete(Pontos pontos);
         Pontos GetByID(int pontosID);
-        int? GetPontosByIDUsuario(int idUsuario);  
+        int? GetPontuacaoByIDUsuario(int idUsuario);
+        Pontos GetPontosByIDUsuario(int idUsuario);
+
     }
 }

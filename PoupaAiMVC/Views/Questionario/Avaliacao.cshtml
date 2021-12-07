@@ -7,7 +7,7 @@
 }
 
 <br />
-@using (Html.BeginForm("ValidaRespostas", "Questionario", FormMethod.Post, new { @autocomplete = "off" }))
+@using (Html.BeginForm("Resultado", "Questionario", FormMethod.Post, new { @autocomplete = "off" }))
 {
     @for (int i = 0; i < Model.Questoes.Count(); i++)
     {
@@ -29,12 +29,12 @@
                         @if (Model.Alternativas[j].Id_Questao == Model.Questoes[i].IdQuestao)
                         {
                             <div class="form-check">
-                                @Html.RadioButtonFor(Model => Model.AlternativaEscolhida[i], Model.Alternativas[j].alternativa, new { @Name = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
-                                @Html.LabelFor(Model => Model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
-                                @Html.HiddenFor(Model => Model.Alternativas[j].Id_Questao)
-                                @Html.HiddenFor(Model => Model.Alternativas[j].IdAlternativa)
-                                @Html.HiddenFor(Model => Model.Alternativas[j].correta)
-                                @Html.HiddenFor(Model => Model.Alternativas[j].alternativa)
+                                @Html.RadioButtonFor(model => model.AlternativaEscolhida[i], Model.Alternativas[j].alternativa, new { @Name = Model.Questoes[i].IdQuestao, @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-input" })
+                                @Html.LabelFor(model => model.Alternativas[j].alternativa, Model.Alternativas[j].alternativa, new { @name = Model.Questoes[i].IdQuestao, @id = Model.Questoes[i].IdQuestao, @class = "form-check-label" })
+                                @Html.HiddenFor(model => model.Alternativas[j].Id_Questao)
+                                @Html.HiddenFor(model => model.Alternativas[j].IdAlternativa)
+                                @Html.HiddenFor(model => model.Alternativas[j].correta)
+                                @Html.HiddenFor(model => model.Alternativas[j].alternativa)
                             </div>
 
                         }
@@ -45,7 +45,7 @@
         </div>
     }
     <div class="d-grid">
-        <input type="submit" value="Finalizar" class="btn btn-primary" />
+        <input type="submit" value="Finalizar" class="btn btn-primary" onclick="return confirm('Por favor, verifique se respondeu todas as questões.')" />
     </div>
     
 

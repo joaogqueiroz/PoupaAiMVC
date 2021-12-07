@@ -96,14 +96,24 @@ namespace PoupaAiMVC.Data.Repositories
             }
         }
 
-        public List<Nivel> GetNivelByIDQuestao(int idNivel)
+        public List<Nivel> GetNivelByIDQuestaoList(int idQuestao)
         {
             var query = @"SELECT * FROM nivel
                           WHERE Id_Questao = @idQuestao";
 
             using (var connection = new MySqlConnection(_context_QuestoesDB))
             {
-                return connection.Query<Nivel>(query, new { idNivel }).ToList();
+                return connection.Query<Nivel>(query, new { idQuestao }).ToList();
+            }
+        }
+        public Nivel GetNivelByIDQuestaoFrist(int idQuestao)
+        {
+            var query = @"SELECT * FROM nivel
+                          WHERE Id_Questao = @idQuestao";
+
+            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            {
+                return connection.Query<Nivel>(query, new { idQuestao }).FirstOrDefault();
             }
         }
     }

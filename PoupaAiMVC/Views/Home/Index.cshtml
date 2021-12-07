@@ -2,9 +2,10 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
+    var pontuacao = @TempData["Pontuacao"];
 }
 
-<h3><strong>Pontuação total : @TempData["Pontuacao"]</strong></h3>
+<h3><strong>Pontuação total : @pontuacao</strong></h3>
 
 <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
@@ -62,9 +63,13 @@
                     <br />
                     <br />
                 </p>
-                <div class="d-grid">
-                    <a href="/Questionario/Avaliacao?id=2" class="btn btn-primary" onclick="return confirm('Deseja começar o questionario ?')">Iniciar questionario</a>
-                </div>
+                @if (pontuacao)
+                {
+                    <div class="d-grid">
+                        <a href="/Questionario/Avaliacao?id=2" disabled class="btn btn-primary" onclick="return confirm('Deseja começar o questionario ?')">Iniciar questionario</a>
+                    </div>
+                }
+
             </div>
         </div>
     </div>

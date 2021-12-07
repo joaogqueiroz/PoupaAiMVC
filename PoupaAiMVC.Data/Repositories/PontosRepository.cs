@@ -29,14 +29,14 @@ namespace PoupaAiMVC.Data.Repositories
                 Nivel1,
                 Nivel2,
                 Nivel3,
-                IdUsuario)
+                Id_Usuario)
             VALUES(
                 @Nivel1,
                 @Nivel2,
                 @Nivel3,
                 @IdUsuario)";
 
-            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            using (var connetionString = new MySqlConnection(_context_UsuarioDB))
             {
                 connetionString.Execute(query, pontos);
             }
@@ -62,7 +62,7 @@ namespace PoupaAiMVC.Data.Repositories
                     Nivel3 = @Nivel3                  
                 WHERE
                     IdPontos = @IdPontos";
-            using (var connetionString = new MySqlConnection(_context_QuestoesDB))
+            using (var connetionString = new MySqlConnection(_context_UsuarioDB))
             {
                 connetionString.Execute(query, pontos);
             }
@@ -72,7 +72,7 @@ namespace PoupaAiMVC.Data.Repositories
         {
             var query = @"DELETE FROM pontos
                           WHERE IdPontos = @IdPontos";
-            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
                 connection.Execute(query, pontos);
             }
@@ -81,14 +81,14 @@ namespace PoupaAiMVC.Data.Repositories
         public Pontos GetByID(int pontosID)
         {
             var query = @"SELECT * FROM pontos
-                          WHERE Pontos = @Pontos";
+                          WHERE IdPontos = @pontosID";
 
-            using (var connection = new MySqlConnection(_context_QuestoesDB))
+            using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
                 return connection.Query<Pontos>(query, new { pontosID }).FirstOrDefault();
             }
         }
-        public int? GetPontosByIDUsuario(int idUsuario)
+        public int? GetPontuacaoByIDUsuario(int idUsuario)
         {
             var query = @"SELECT SUM(Nivel1 + Nivel2 + Nivel3) AS PontuacaoTotal 
                         FROM pontos WHERE(Id_Usuario = @idUsuario)";
@@ -96,6 +96,15 @@ namespace PoupaAiMVC.Data.Repositories
             using (var connection = new MySqlConnection(_context_UsuarioDB))
             {
                 return connection.Query<int?>(query, new { idUsuario }).FirstOrDefault();
+            }
+        }
+        public Pontos GetPontosByIDUsuario(int idUsuario)
+        {
+            var query = @"SELECT * FROM pontos WHERE(Id_Usuario = @idUsuario)";
+
+            using (var connection = new MySqlConnection(_context_UsuarioDB))
+            {
+                return connection.Query<Pontos>(query, new { idUsuario }).FirstOrDefault();
             }
         }
     }

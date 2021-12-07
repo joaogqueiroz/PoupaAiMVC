@@ -32,7 +32,7 @@ namespace PoupaAiMVC.Controllers
 
                 var usuario = _usuarioRepository.Get(email);
 
-                var Pontuacao = _pontosRepository.GetPontosByIDUsuario(usuario.IdUsuario);
+                var Pontuacao = _pontosRepository.GetPontuacaoByIDUsuario(usuario.IdUsuario);
 
                 if (Pontuacao == null)
                 {
@@ -45,15 +45,6 @@ namespace PoupaAiMVC.Controllers
 
 
                 }
-                /*
-                 var tasks = _pontosRepository.GetByUserAndPeriod(user.UserID, FirstDayOfCurrentMonth, LastDayOfCurrentMonth);
-
-                TempData["LowPriorityAmount"] = tasks.Count(t => t.Priority.Equals("LOW"));
-                TempData["MediumPriorityAmount"] = tasks.Count(t => t.Priority.Equals("MEDIUM"));
-                TempData["HighPriorityAmount"] = tasks.Count(t => t.Priority.Equals("HIGH"));
-
-                TempData["Tasks"] = tasks;
-                */
             }
             catch (Exception e)
             {

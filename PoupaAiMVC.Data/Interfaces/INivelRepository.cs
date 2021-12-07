@@ -14,6 +14,7 @@ namespace PoupaAiMVC.Data.Interfaces
         void Update(Nivel nivel);
         void Delete(Nivel nivel);
         Nivel GetByID(int nivelID);
-        List<Nivel> GetNivelByIDQuestao(int idNivel);
+        List<Nivel> GetNivelByIDQuestaoList(int idQuestao);
+        Nivel GetNivelByIDQuestaoFrist(int idQuestao);
     }
 }
