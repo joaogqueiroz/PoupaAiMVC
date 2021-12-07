@@ -10,7 +10,7 @@ namespace PoupaAiMVC.Data.Entities
     {
         public int IdAlternativa { get; set; }
         public string alternativa { get; set; }
-        public string correta { get; set; }
+        public bool correta { get; set; }
         public int Id_Questao { get; set; }
         public string AlternativaEscolhida { get; set; }
 

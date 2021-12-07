@@ -15,13 +15,14 @@ namespace PoupaAiMVC.Controllers.Questionario
     {
 
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPontosRepository _pontosRepository;
         private readonly IQuestoesRepository _questoesRepository;
         private readonly IAlternativaRepository _alternativaRepository;
 
-
-        public QuestionarioController(IUsuarioRepository usuarioRepository, IQuestoesRepository questoesRepository, IAlternativaRepository alternativaRepository)
+        public QuestionarioController(IUsuarioRepository usuarioRepository, IPontosRepository pontosRepository, IQuestoesRepository questoesRepository, IAlternativaRepository alternativaRepository)
         {
             _usuarioRepository = usuarioRepository;
+            _pontosRepository = pontosRepository;
             _questoesRepository = questoesRepository;
             _alternativaRepository = alternativaRepository;
         }
@@ -49,7 +50,6 @@ namespace PoupaAiMVC.Controllers.Questionario
                 }
                 else if (id == 2)
                 {
-
                     var Questoes = _questoesRepository.GetByMundo2();
                     var Alternativas = _alternativaRepository.Read();
 
@@ -89,23 +89,24 @@ namespace PoupaAiMVC.Controllers.Questionario
                         {
                             for (int j = 0; j < model.Alternativas.Count(); j++)
                             {
-                                /*if ()
+                                var resposta = model.AlternativaEscolhida[i];
+                                if (resposta == model.Alternativas[j].alternativa)
                                 {
-
-                                }*/
+                                    if (model.Alternativas[j].correta == true)
+                                    {
+                                        var pontuacao = +1;
+                                    }
+                                }
 
                             }
 
-                        }
-                        else
-                        {
-                            TempData["Messege"] = "Selecione ao menos uma alternativa por questão";
                         }
 
 
 
                     }
 
+                    
                 }
 
             }
